@@ -9,7 +9,7 @@ void CharChange(char* _Text, char _Prev, char _Next)
 		{
 			_Text[iCount] = _Next;
 		}
-		iCount++;
+		iCount += 1;
 	}
 }
 
