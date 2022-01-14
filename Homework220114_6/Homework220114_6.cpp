@@ -34,7 +34,7 @@ void TextChange(char* _Text, const char* _Prev, const char* _Next)
 				}
 			}
 
-			// 바꿀 텍스트가 맞을경우
+			// 바꿀 텍스트가 맞을경우 바꾸려는 텍스트추가 및 현재 인덱스를 바꿀 텍스트의 크기만큼 증가
 			if (true == bClear)
 			{
 				int iNextCount = 0;
@@ -46,14 +46,14 @@ void TextChange(char* _Text, const char* _Prev, const char* _Next)
 				}
 				iCount += iPrevLength;
 			}
-			else
+			else // 바꿀 텍스트가 아니였을 경우 그냥추가
 			{
 				tmpChar[iTmpCount] = _Text[iCount];
 				iTmpCount += 1;
 				iCount += 1;
 			}
 		}
-		else
+		else // 현재 문자가 바꿀 텍스트의 첫 문자가 아닐경우 그냥 추가
 		{
 			tmpChar[iTmpCount] = _Text[iCount];
 			iTmpCount += 1;
