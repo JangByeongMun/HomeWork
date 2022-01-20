@@ -13,6 +13,7 @@ class Test2
 class Test3
 {
 public:
+    char z[3] = {0};
     int a = 0;
     char b = 0;
     char c = 0;
@@ -27,8 +28,11 @@ int main()
 
     Test3 newTest3 = Test3();
     __int64 startValue1 = (__int64) & newTest3;
-    __int64 startValue3 = (__int64) & newTest3.a;
-    __int64 startValue2 = (__int64) & newTest3.b;
-    __int64 startValue4 = (__int64) & newTest3.c;
-    __int64 startValue5 = (__int64) & newTest3.d;
+    __int64 startValue2 = (__int64) & newTest3.z[0];
+    __int64 startValue3 = (__int64) & newTest3.z[1];
+    __int64 startValue4 = (__int64) & newTest3.z[2];
+    __int64 startValue5 = (__int64) & newTest3.a;
+    __int64 startValue6 = (__int64) & newTest3.b;
+    __int64 startValue7 = (__int64) & newTest3.c;
+    __int64 startValue8 = (__int64) & newTest3.d;
 }
