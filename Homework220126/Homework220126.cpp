@@ -56,7 +56,7 @@ int main()
     Result = Value++;
 
 
-    MyInt MyValue = 0;
+    MyInt MyValue = MyInt(0);
     MyInt MyResult = 0;
 
     MyResult = ++MyValue;
@@ -66,4 +66,4 @@ int main()
     MyResult = --MyValue;
     MyResult = 0;
     MyResult = MyValue--;
-}
+} 

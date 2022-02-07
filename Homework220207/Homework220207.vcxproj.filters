@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Image Include="HomeworkImg\Memory1.PNG" />
+    <Image Include="HomeworkImg\Memory2.PNG" />
+    <Image Include="HomeworkImg\Memory3-1.PNG" />
+    <Image Include="HomeworkImg\Memory3-2.PNG" />
+    <Image Include="HomeworkImg\Memory4.PNG" />
+    <Image Include="HomeworkImg\Memory5.PNG" />
+    <Image Include="HomeworkImg\Memory6-1.PNG" />
+    <Image Include="HomeworkImg\Memory6-2.PNG" />
+    <Image Include="HomeworkImg\Memory6-3.PNG" />
+    <Image Include="HomeworkImg\Memory7.PNG" />
+    <Image Include="HomeworkImg\Memory8.PNG" />
+    <Image Include="HomeworkImg\메인함수.PNG" />
+    <Image Include="HomeworkImg\클래스내부.PNG" />
+    <Image Include="HomeworkImg\클래스멤버함수.PNG" />
+  </ItemGroup>
+</Project>
