@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ConsoleScreen.cpp" />
+    <ClCompile Include="TextScreen.cpp">
+      <Filter>01. Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleMath.cpp">
+      <Filter>01. Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>02. Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>02. Contents</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TextScreen.h">
+      <Filter>01. Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleMath.h">
+      <Filter>01. Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>02. Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>02. Contents</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="01. Engine">
+      <UniqueIdentifier>{5e5865dc-709c-4d38-98e7-482b9bce2813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Contents">
+      <UniqueIdentifier>{387aebae-cd88-407d-bea2-3c69e16cebce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
