@@ -72,6 +72,8 @@ public:
         Release();
         ArrData_ = tmpData;
         Size_ = _Size;
+
+        delete[] tmpData;
     }
 
 public:
