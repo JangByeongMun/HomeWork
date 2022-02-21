@@ -24,7 +24,12 @@ ConsoleObject::~ConsoleObject()
 {
 }
 
-void ConsoleObject::Update() 
+bool ConsoleObject::CrashBody(const ConsoleVector* _vector) const
+{
+	return false;
+}
+
+void ConsoleObject::Update()
 {
 
 }
@@ -81,7 +86,8 @@ void ConsoleObject::SetRenderChar(const char* _Text)
 	}
 }
 
-void ConsoleObject::OverLap(ConsoleObject* _Other) {
+void ConsoleObject::OverLap(ConsoleObject* _Other) 
+{
 
 }
 
@@ -92,5 +98,15 @@ bool ConsoleObject::OverLapCheck(const ConsoleObject* _Other)
 		return true;
 	}
 	
+	return false;
+}
+
+bool ConsoleObject::OverLapCheck(const ConsoleVector* _vector)
+{
+	if (GetPos() == ConsoleVector(_vector->x_, _vector->y_))
+	{
+		return true;
+	}
+
 	return false;
 }

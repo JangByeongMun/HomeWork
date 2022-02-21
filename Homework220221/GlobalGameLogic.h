@@ -5,9 +5,10 @@
 class GlobalGameLogic
 {
 public:
+	static bool isClear;
+
 	static ConsoleObject* CreateBodyLogic(const ConsoleObject* _Player);
 	static void ReleaseObj(ConsoleObject* _obj);
-
 
 protected:
 

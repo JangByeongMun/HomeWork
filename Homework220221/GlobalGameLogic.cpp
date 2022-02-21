@@ -11,7 +11,7 @@ GlobalGameLogic::~GlobalGameLogic()
 {
 }
 
-
+bool GlobalGameLogic::isClear = false;
 
 ConsoleObject* GlobalGameLogic::CreateBodyLogic(const ConsoleObject* _Player) 
 {
@@ -30,6 +30,10 @@ ConsoleObject* GlobalGameLogic::CreateBodyLogic(const ConsoleObject* _Player)
 			{
 				continue;
 			}
+			if (true == _Player->CrashBody(&Pos))
+			{
+				continue;
+			}
 
 			AllPos.push_back({ x, y });
 		}
@@ -38,12 +42,4 @@ ConsoleObject* GlobalGameLogic::CreateBodyLogic(const ConsoleObject* _Player)
 	ConsoleRandom Random = ConsoleRandom(time(nullptr));
 	NewBody->Init(AllPos[Random.Next(0, AllPos.size())], "£À");
 	return NewBody;
-}
-
-void GlobalGameLogic::ReleaseObj(ConsoleObject* _obj)
-{
-	if (nullptr != _obj)
-	{
-		delete _obj;
-	}
 }

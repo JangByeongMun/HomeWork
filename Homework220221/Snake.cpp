@@ -13,11 +13,12 @@
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//_CrtSetBreakAlloc(174);
 
-	ConsoleScreen::GetInst().CreateScreen(10, 10, "□");
+	ConsoleScreen::GetInst().CreateScreen(3, 3, "□");
 
 	ConsoleObject* NewHead = new Head();
-	NewHead->Init({ 5, 5 }, "★");
+	NewHead->Init({ ConsoleScreen::GetInst().GetSize().x_ / 2, ConsoleScreen::GetInst().GetSize().y_ / 2 }, "★");
 
 	ConsoleObject* NewBody = GlobalGameLogic::CreateBodyLogic(NewHead);
 
@@ -26,7 +27,7 @@ int main()
 		if (nullptr == NewBody)
 		{
 			NewBody = GlobalGameLogic::CreateBodyLogic(NewHead);
-		}
+		} 
 	
 		ConsoleScreen::GetInst().RenderStart();
 	
@@ -38,20 +39,15 @@ int main()
 		NewBody->Update();
 		NewHead->Update();
 	
-		if (true == NewHead->GetIsDeath())
-		{
-			break;
-		}
-	
 		if (NewHead->OverLapCheck(NewBody))
 		{
 			NewHead->OverLap(NewBody);
-	
-			if (nullptr != NewBody)
-			{
-				delete NewBody;
-				NewBody = nullptr;
-			}
+			NewBody = nullptr;
+		}
+
+		if (true == NewHead->GetIsDeath() || true == GlobalGameLogic::isClear)
+		{
+			break;
 		}
 	}
 
@@ -65,5 +61,6 @@ int main()
 		delete (Head*)NewHead;
 		NewHead = nullptr;
 	}
+
 	ConsoleScreen::Destroy();
 }

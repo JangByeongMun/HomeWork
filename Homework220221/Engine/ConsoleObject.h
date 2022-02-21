@@ -38,11 +38,13 @@ public:
 		Pos_ += _Value;
 	}
 
+	virtual bool CrashBody(const ConsoleVector* _vector) const;
 
 	virtual void Update();
 	virtual void Render();
 	virtual void OverLap(ConsoleObject* _Other);
 	bool OverLapCheck(const ConsoleObject* _Other);
+	bool OverLapCheck(const ConsoleVector* _vector);
 
 
 	void SetRenderChar(const char* _Text);
