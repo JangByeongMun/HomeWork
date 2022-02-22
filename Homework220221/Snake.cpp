@@ -15,7 +15,7 @@ int main()
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//_CrtSetBreakAlloc(174);
 
-	ConsoleScreen::GetInst().CreateScreen(3, 3, "□");
+	ConsoleScreen::GetInst().CreateScreen(4, 4, "□");
 
 	ConsoleObject* NewHead = new Head();
 	NewHead->Init({ ConsoleScreen::GetInst().GetSize().x_ / 2, ConsoleScreen::GetInst().GetSize().y_ / 2 }, "★");
@@ -51,16 +51,21 @@ int main()
 		}
 	}
 
+	// 마지막 렌더
+	ConsoleScreen::GetInst().RenderStart();
 	if (nullptr != NewBody)
 	{
+		NewBody->Render();
 		delete (Body*)NewBody;
 		NewBody = nullptr;
 	}
 	if (nullptr != NewHead)
 	{
+		NewHead->Render();
 		delete (Head*)NewHead;
 		NewHead = nullptr;
 	}
+	ConsoleScreen::GetInst().RenderEnd();
 
 	ConsoleScreen::Destroy();
 }
