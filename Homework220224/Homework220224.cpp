@@ -98,10 +98,12 @@ private:
             if (nullptr != LeftChild_)
             {
                 LeftChild_->Release();
+                LeftChild_ = nullptr;
             }
             if (nullptr != RightChild_)
             {
                 RightChild_->Release();
+                RightChild_ = nullptr;
             }
 
             delete this;
@@ -336,6 +338,7 @@ public:
         if (nullptr != RootNode_)
         {
             RootNode_->Release();
+            RootNode_ = nullptr;
         }
     }
 };
