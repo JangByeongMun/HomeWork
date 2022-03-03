@@ -1,7 +1,8 @@
 #pragma once
 #include <assert.h>
 
-using dataType = int;
+//using dataType = int;
+template <typename dataType>
 class MyArray
 {
 private:
@@ -62,7 +63,7 @@ public:
 	{
 		if (nullptr != dataArr)
 		{
-			delete dataArr;
+			delete[] dataArr;
 			dataArr = nullptr;
 		}
 	}

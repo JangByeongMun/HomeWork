@@ -1,7 +1,8 @@
 #pragma once
 #include "MyArray.h"
 
-using dataType = int;
+//using dataType = int;
+template <typename dataType>
 class MyVector 
 {
 public:

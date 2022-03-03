@@ -8,7 +8,7 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	MyArray arr = MyArray(5);
+	MyArray<int> arr = MyArray<int>(5);
 	for (int i = 0; i < arr.GetSize(); i++)
 	{
 		arr[i] = i + 1;
@@ -21,7 +21,7 @@ int main()
 	cout << "--arr--------" << arr.GetSize() << "-------------------" << endl;
 
 
-	MyVector vec = MyVector();
+	MyVector<int> vec = MyVector<int>();
 	vec.Reserve(5);
 	vec.Resize(3);
 	vec.Push_Back(77);
@@ -29,7 +29,7 @@ int main()
 	vec.Push_Back(77);
 	vec.Push_Back(77);
 	vec.Pop_Back();
-	MyVector::iterator myIter = vec.Begin();
+	MyVector<int>::iterator myIter = vec.Begin();
 	for (; myIter != vec.End(); ++myIter)
 	{
 		cout << *myIter << endl;
