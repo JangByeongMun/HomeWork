@@ -13,8 +13,12 @@ int main()
 	stdList.push_back(1);
 	stdList.push_front(2);
 	stdList.push_front(3);
-	stdList.erase(stdList.begin());
-	stdList.front() = 10;
+	stdList.push_back(4);
+	stdList.push_back(5);
+	stdList.erase(++stdList.begin());
+	//stdList.front() = 10;
+	stdList.pop_front();
+	stdList.pop_back();
 
 	list<int>::iterator stdBeginIter = stdList.begin();
 	list<int>::iterator stdEndIter = stdList.end();
@@ -28,8 +32,12 @@ int main()
 	myList.Push_Back(1);
 	myList.Push_Front(2);
 	myList.Push_Front(3);
-	myList.Erase(myList.Begin());
-	myList.Front() = 10;
+	myList.Push_Back(4);
+	myList.Push_Back(5);
+	myList.Erase(++myList.Begin());
+	//myList.Front() = 10;
+	myList.Pop_Front();
+	myList.Pop_Back();
 
 	MyList::iterator myBeginIter = myList.Begin();
 	MyList::iterator myEndIter = myList.End();

@@ -105,6 +105,22 @@ public:
 		endNode_->beforeNode_->nextNode_ = newNode;
 		endNode_->beforeNode_ = newNode;
 	}
+
+	void Pop_Front() 
+	{
+		MyNode* tmpNode = beginNode_->nextNode_->nextNode_;
+		delete beginNode_->nextNode_;
+		beginNode_->nextNode_ = tmpNode;
+		tmpNode->beforeNode_ = beginNode_;
+	}
+	void Pop_Back()
+	{
+		MyNode* tmpNode = endNode_->beforeNode_->beforeNode_;
+		delete endNode_->beforeNode_;
+		endNode_->beforeNode_ = tmpNode;
+		tmpNode->nextNode_ = endNode_;
+	}
+
 	iterator Erase(iterator _iter) const
 	{
 		MyNode* tmpNode = _iter.curNode_->nextNode_;
@@ -135,7 +151,6 @@ public:
 	{
 		return MyList::iterator(endNode_);
 	}
-
 
 public:
 	MyList()

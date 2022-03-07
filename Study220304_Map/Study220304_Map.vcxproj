@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{de66233a-b3e6-4068-92c1-9e0fb5eab8f0}</ProjectGuid>
-    <RootNamespace>Study220225</RootNamespace>
+    <ProjectGuid>{e1d14942-b08d-4c23-bc73-992853a338c6}</ProjectGuid>
+    <RootNamespace>Study220304Map</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Study220225_Vector</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,11 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Study220225.cpp" />
+    <ClCompile Include="Study220304_Map.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyArray.h" />
-    <ClInclude Include="MyVector.h" />
+    <ClInclude Include="MyMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
