@@ -29,14 +29,21 @@ int main()
 	myMap.FirstOrder(); // 전위순회
 	cout << "-------------------" << endl;
 
-	cout << "중위 순회" << std::endl;
-	myMap.MidOrder(); // 중위순회
-	cout << "-------------------" << endl;
-
 	cout << "후위 순회" << std::endl;
 	myMap.LastOrder(); // 후위순회
 	cout << "-------------------" << endl;
 
+	cout << "중위 순회" << std::endl;
+	myMap.MidOrder(); // 중위순회
+	cout << "-------------------" << endl;
+
+	MyMap::iterator eraseIter = myMap.Begin();
+	++eraseIter;
+	++eraseIter;
+	++eraseIter;
+	myMap.Erase(eraseIter);
+
+	cout << "Erase 후 iterator 순회" << std::endl;
 	MyMap::iterator beginIter = myMap.Begin();
 	MyMap::iterator endIter = myMap.End();
 	for (; beginIter != endIter; ++beginIter)

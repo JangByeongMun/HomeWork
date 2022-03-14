@@ -2,25 +2,26 @@
 
 using namespace std;
 
-struct TestStr
+class A
 {
 	int a;
-	int b;
+
+	// delete Function
+	//A(const A& _Other) = delete;
+	//A(A&& _Other) noexcept = delete;
+	A& operator=(const A& _Other) = delete;
+	A& operator=(A&& _Other) noexcept = delete;
 };
 
 
+namespace TestSpace
+{
+	int a = 0;
+}
 
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-	int testArr[20] = {};
-	int* testIntPtr = new int[10];
-	for (int i = 0; i < 20; i++)
-	{
-		cout << testIntPtr[i] << endl;
-	}
-	delete[] testIntPtr;
-
-	TestStr ts = {1, 2};
+	TestSpace::a = 1;
+	A newA = A();
 }

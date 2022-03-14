@@ -37,6 +37,7 @@ MyPair Make_Pair(const dataType1& _key, const dataType2& _value)
 
 class MyMap
 {
+	class iterator;
 private:
 	class MyNode
 	{
@@ -176,14 +177,13 @@ private:
 
 		MyNode* MinNode()
 		{
-			if (nullptr != leftNode_)
-			{
-				return leftNode_->MinNode();
-			}
-			else
+			int a = pair_.first_;
+			if (nullptr == leftNode_)
 			{
 				return this;
 			}
+
+			return leftNode_->MinNode();
 		}
 		MyNode* MaxNode()
 		{
@@ -308,6 +308,63 @@ public:
 	iterator End()
 	{
 		return iterator(nullptr);
+	}
+	iterator Erase(const iterator& _value)
+	{
+		MyNode* deleteNode = _value.Node_;
+		MyNode* changeNode = nullptr;
+		MyNode* returnNode = deleteNode->Next();
+
+		if (nullptr != deleteNode->leftNode_)
+		{
+			changeNode = deleteNode->leftNode_->MaxNode();
+			if (nullptr != changeNode->leftNode_)
+			{
+				changeNode->leftNode_->parentNode_ = changeNode->parentNode_;
+			}
+		}
+		else if (nullptr != deleteNode->rightNode_)
+		{
+			changeNode = deleteNode->rightNode_->MinNode();
+			if (nullptr != changeNode->rightNode_)
+			{
+				changeNode->rightNode_->parentNode_ = changeNode->parentNode_;
+			}
+		}
+
+		if (MyType::Left == deleteNode->type_)
+		{
+			deleteNode->parentNode_->leftNode_ = changeNode;
+		}
+		if (MyType::Right == deleteNode->type_)
+		{
+			deleteNode->parentNode_->rightNode_ = changeNode;
+		}
+		if (MyType::Left == changeNode->type_)
+		{
+			changeNode->parentNode_->leftNode_ = nullptr;
+		}
+		if (MyType::Right == changeNode->type_)
+		{
+			changeNode->parentNode_->rightNode_ = nullptr;
+		}
+
+		changeNode->parentNode_ = deleteNode->parentNode_;
+		changeNode->leftNode_ = deleteNode->leftNode_;
+		changeNode->rightNode_ = deleteNode->rightNode_;
+
+		if (nullptr != changeNode->leftNode_)
+		{
+			changeNode->leftNode_->parentNode_ = changeNode;
+		}
+		if (nullptr != changeNode->rightNode_)
+		{
+			changeNode->rightNode_->parentNode_ = changeNode;
+		}
+
+		delete deleteNode;
+		deleteNode = nullptr;
+		return iterator(returnNode);
 	}
 
 public:

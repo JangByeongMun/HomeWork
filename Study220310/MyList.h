@@ -1,0 +1,198 @@
+#pragma once
+
+
+using dataType = int;
+class MyList
+{
+private:
+	class MyNode
+	{
+	public:
+		dataType value_;
+		MyNode* beforeNode_;
+		MyNode* nextNode_;
+
+	public:
+		MyNode()
+			: value_(0)
+			, beforeNode_(nullptr)
+			, nextNode_(nullptr)
+		{
+		}
+		MyNode(dataType _value)
+			: value_(_value)
+			, beforeNode_(nullptr)
+			, nextNode_(nullptr)
+		{
+		}
+		~MyNode()
+		{
+
+		}
+	};
+
+public:
+	class iterator
+	{
+		friend MyList;
+	private:
+		MyNode* curNode_;
+
+	public:
+		iterator& operator++()
+		{
+			curNode_ = curNode_->nextNode_;
+			return *this;
+		}
+		iterator operator++(int)
+		{
+			iterator tmpIter = iterator(curNode_);
+			curNode_ = curNode_->nextNode_;
+			return tmpIter;
+		}
+		bool operator==(const iterator& _other) const
+		{
+			return curNode_ == _other.curNode_;
+		}
+		bool operator!=(const iterator& _other) const
+		{
+			return curNode_ != _other.curNode_;
+		}
+		dataType operator*()
+		{
+			return curNode_->value_;
+		}
+
+	public:
+		iterator()
+			: curNode_(nullptr)
+		{
+
+		}
+		iterator(MyNode* _node)
+		{
+			curNode_ = _node;
+		}
+		~iterator()
+		{
+
+		}
+	};
+
+private:
+	int size_;
+	MyNode* beginNode_;
+	MyNode* endNode_;
+
+public:
+	void Push_Front(const dataType& _value)
+	{
+		size_ += 1;
+		MyNode* newNode = new MyNode(_value);
+		newNode->beforeNode_ = beginNode_;
+		newNode->nextNode_ = beginNode_->nextNode_;
+
+		beginNode_->nextNode_->beforeNode_ = newNode;
+		beginNode_->nextNode_ = newNode;
+	}
+	void Push_Back(const dataType& _value)
+	{
+		size_ += 1;
+		MyNode* newNode = new MyNode(_value);
+		newNode->beforeNode_ = endNode_->beforeNode_;
+		newNode->nextNode_ = endNode_;
+
+		endNode_->beforeNode_->nextNode_ = newNode;
+		endNode_->beforeNode_ = newNode;
+	}
+
+	void Pop_Front()
+	{
+		if (size_ <= 0)
+		{
+			return;
+		}
+
+		MyNode* tmpNode = beginNode_->nextNode_->nextNode_;
+		delete beginNode_->nextNode_;
+		beginNode_->nextNode_ = tmpNode;
+		tmpNode->beforeNode_ = beginNode_;
+
+		size_ -= 1;
+	}
+	void Pop_Back()
+	{
+		if (size_ <= 0)
+		{
+			return;
+		}
+
+		MyNode* tmpNode = endNode_->beforeNode_->beforeNode_;
+		delete endNode_->beforeNode_;
+		endNode_->beforeNode_ = tmpNode;
+		tmpNode->nextNode_ = endNode_;
+
+		size_ -= 1;
+	}
+
+	iterator Erase(iterator _iter)
+	{
+		MyNode* tmpNode = _iter.curNode_->nextNode_;
+		if (size_ <= 0)
+		{
+			return iterator(tmpNode);
+		}
+
+		_iter.curNode_->nextNode_->beforeNode_ = _iter.curNode_->beforeNode_;
+		_iter.curNode_->beforeNode_->nextNode_ = _iter.curNode_->nextNode_;
+
+		if (nullptr != _iter.curNode_)
+		{
+			delete _iter.curNode_;
+			_iter.curNode_ = nullptr;
+		}
+		size_ -= 1;
+		return iterator(tmpNode);
+	}
+	inline dataType& Front()
+	{
+		return beginNode_->nextNode_->value_;
+	}
+
+	int GetSize()
+	{
+		return size_;
+	}
+	iterator Begin()
+	{
+		return MyList::iterator(beginNode_->nextNode_);
+	}
+	iterator End()
+	{
+		return MyList::iterator(endNode_);
+	}
+
+public:
+	MyList()
+		: size_(0)
+		, beginNode_(new MyNode())
+		, endNode_(new MyNode())
+	{
+		beginNode_->nextNode_ = endNode_;
+		endNode_->beforeNode_ = beginNode_;
+	}
+	~MyList()
+	{
+		MyNode* curNode = beginNode_;
+		while (nullptr != curNode)
+		{
+			MyNode* tmpNode = curNode->nextNode_;
+			if (nullptr != curNode)
+			{
+				delete curNode;
+				curNode = nullptr;
+			}
+			curNode = tmpNode;
+		}
+	}
+};
